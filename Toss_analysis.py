@@ -2,15 +2,19 @@ import csv
 import numpy as np
 from matplotlib import pyplot as plt
 class ipl_analysis:
-    def plot_grph(self,team_names, no_of_match_toss_win):
-        plt.figure(figsize=(20, 10))
+    def bar_grph(self,team_names, no_of_match_toss_win,no_of_match_indiv):
+        fig_size=plt.figure(figsize=(20, 10))
+        bar_width = 0.35
         y_pos = np.arange(len(team_names)) 
-        plt.bar(y_pos, no_of_match_toss_win, align='center', alpha=1)
+        result1=plt.bar(y_pos, no_of_match_toss_win,bar_width,color='b', alpha=1, label='Toss_win_num')
+        result2=plt.bar(y_pos+bar_width,no_of_match_indiv,bar_width,color='g',alpha=1, label='Total_no_num')
         plt.xticks(y_pos, team_names)
         plt.ylabel('TOSS_WON_NUMBERS')
         plt.xlabel('IPL_TEAM_NAMES')
         plt.title('IPL_TOSS_WIN_NUMBERS')
+        plt.legend()
         plt.show()
+    
 
 Year_input=str(input())
 csv_file = open("D:\Python\ipl\matches.csv",'r')
@@ -39,6 +43,4 @@ for team in set(Toss_won_team):
             counter_win+=1
     no_of_match_toss_win.append(counter_win)          
 object_ipl=ipl_analysis()
-object_ipl.plot_grph(team_names,no_of_match_toss_win)
-
-
+object_ipl.bar_grph(team_names,no_of_match_toss_win,no_of_match_indiv)
