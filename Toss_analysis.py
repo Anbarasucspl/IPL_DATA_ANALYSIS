@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 class ipl_analysis:
     def bar_grph(self,team_names, no_of_match_toss_win,no_of_match_indiv,Tot_indiv_mat_win,Year_input):
         fig_size=plt.figure(figsize=(20, 15))
-        bar_width = 0.35
+        bar_width = 0.25
         y_pos = np.arange(len(team_names)) 
         result1=plt.bar(y_pos, no_of_match_toss_win,bar_width,color='b', alpha=1, label='Toss_win_num')
         result2=plt.bar(y_pos+bar_width,no_of_match_indiv,bar_width,color='r',alpha=1, label='Total_no_num')
