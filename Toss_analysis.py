@@ -1,6 +1,17 @@
 import csv
 import numpy as np
 from matplotlib import pyplot as plt
+class ipl_analysis:
+    def plot_grph(self,team_names, no_of_match_toss_win):
+        plt.figure(figsize=(20, 10))
+        y_pos = np.arange(len(team_names)) 
+        plt.bar(y_pos, no_of_match_toss_win, align='center', alpha=1)
+        plt.xticks(y_pos, team_names)
+        plt.ylabel('TOSS_WON_NUMBERS')
+        plt.xlabel('IPL_TEAM_NAMES')
+        plt.title('IPL_TOSS_WIN_NUMBERS')
+        plt.show()
+
 Year_input=str(input())
 csv_file = open("D:\Python\ipl\matches.csv",'r')
 csv_data = csv.DictReader(csv_file)
@@ -27,12 +38,7 @@ for team in set(Toss_won_team):
         if win_indiv==team:
             counter_win+=1
     no_of_match_toss_win.append(counter_win)          
-plt.figure(figsize=(20, 10))
-y_pos = np.arange(len(team_names)) 
-plt.bar(y_pos, no_of_match_toss_win, align='center', alpha=1)
-plt.xticks(y_pos, team_names)
-plt.ylabel('TOSS_WON_NUMBERS')
-plt.xlabel('IPL_TEAM_NAMES')
-plt.title('IPL_TOSS_WIN_NUMBERS')
-plt.show()
+object_ipl=ipl_analysis()
+object_ipl.plot_grph(team_names,no_of_match_toss_win)
+
 
