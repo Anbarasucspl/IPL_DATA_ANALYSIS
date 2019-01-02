@@ -1,6 +1,7 @@
 import csv
 import numpy as np
 from matplotlib import pyplot as plt
+Year_input=str(input())
 csv_file = open("D:\Python\ipl\matches.csv",'r')
 csv_data = csv.DictReader(csv_file)
 no_of_match_indiv=[]
@@ -10,7 +11,7 @@ Toss_won_team=[]
 data_2014={}
 for read_1 in sorted(csv_data):
     #team_names=read_1.keys()
-    if read_1['season']=='2008':
+    if read_1['season']== Year_input:
         Toss_won_team.append(read_1['toss_winner'])
         Toss_parti_Teams.append([read_1['team1'],read_1['team2']])
 Total_matches=len(Toss_won_team)
@@ -34,3 +35,4 @@ plt.ylabel('TOSS_WON_NUMBERS')
 plt.xlabel('IPL_TEAM_NAMES')
 plt.title('IPL_TOSS_WIN_NUMBERS')
 plt.show()
+
